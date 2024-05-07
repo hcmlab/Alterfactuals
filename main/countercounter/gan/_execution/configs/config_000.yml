@@ -1,0 +1,87 @@
+batch_size: 1
+epochs: 400
+minimal_logging: False
+dir:
+  checkpoints: EmClass/GANLogging/checkpoints
+  tensorboard: EmClass/GANLogging/tensorboard
+  model: EmClass/GANLogging/models
+  image: EmClass/GANLogging/images
+  dataset: Datasets/MaskColor128
+lr:
+  discriminator: 1e-4
+  generator: 1e-4
+  plausibility: 1e-4
+optimizer:
+  discriminator:
+    name: Adam
+    b1: 0.5
+    b2: 0.999
+  plausibility:
+    name: Adam
+    b1: 0.5
+    b2: 0.999
+  generator:
+    name: Adam
+    b1: 0.5
+    b2: 0.999
+classifier:
+  size: 12
+  dir: classifiers
+  model: '059_3'
+svm:
+  dir: svms
+  model: 'fashion.joblib'
+csae:
+  use: True
+  dir: csaes
+  model: '038_32'
+dataset:
+  type: FashionMNIST
+  in_memory: True
+  resize_random_crop: False
+  n_classes: 2
+  fake_second_class: False
+  channels: 1
+lambdas:
+  classifier: 3
+  ssim: 3
+  plausibility: 0
+  csae: 1
+  svm: 1
+image_sample_size: 3
+losses:
+  mse_ssim: False
+  ssim_encouraged: 'similar'
+  classifier_encouraged: 'dissimilar'
+  classifier_loss: 'BCE' # MSE, Argmax
+  class_to_generate: None
+  ssim_epoch_escalation: False
+  escalation_by_epoch: 0.001
+continue_training:
+  continue: False
+  checkpoint: 'epoch_2'
+  run_to_continue: '109'
+models:
+  wgan: False
+  clipping: 0.01
+  generator:
+    type: 'Custom1'
+    normalize: False
+    use_conv2dtranspose: False
+    upsample_mode: 'nearest'
+    n_classes: None
+    more_noise: False
+    weight_init:
+      mean: 0
+      std: 0.2
+  discriminator:
+    dual: False
+    type: 'PatchGANSmallClass'
+    plausibility_type: 'PatchGANSmallClass'
+    one_sided_label_smoothing: True
+    one_sided_label_smoothing_plausibility: True
+    weight_init:
+      mean: 0
+      std: 0.2
+training_setup:
+  use_classifier: True

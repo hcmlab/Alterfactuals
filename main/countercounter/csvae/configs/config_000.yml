@@ -1,0 +1,42 @@
+batch_size: 64 # TODO
+epochs: 1 # TODO
+image_sample_size: 3
+dir:
+  checkpoints: Logging/checkpoints
+  tensorboard: Logging/tensorboard
+  model: Logging/models
+  image: Logging/images
+  dataset: Datasets/FashionMNIST
+lr:
+  initial: 0.0005
+optimizer:
+  beta1: 20
+  beta2: 1
+  beta3: 0.2
+  beta4: 10
+  beta5: 1
+  x_recon_loss: ssim
+classifier:
+  size: 9
+  dir: classifiers
+  model: '026_40'
+dataset:
+  type: FashionMNIST
+  in_memory: False
+  size_check: True
+  n_classes: 2
+  channels: 1
+continue_training:
+  continue: False
+  checkpoint: 'epoch_18'
+  run_to_continue: '004'
+models:
+  no_var: True
+  conv: True
+  type: 'default'
+  xywsplit: 0
+  zwx: 2
+  grayscale: True
+  z_size: 128
+  w_size: 64
+

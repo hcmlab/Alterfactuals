@@ -1,0 +1,23 @@
+batch_size: 3 # TODO
+epochs: 1 # TODO
+dir:
+  checkpoints: Logging/checkpoints
+  tensorboard: Logging/tensorboard
+  model: Logging/models
+  dataset: Datasets/MNIST
+lr:
+  model: 0.001
+optimizer:
+  name: Adam
+dataset:
+  type: MNIST
+  in_memory: False
+  size_check: True
+continue_training:
+  continue: False
+  checkpoint: 'epoch_18'
+  run_to_continue: '004'
+models:
+  type: 'default'
+  grayscale: True
+  loss: 'ssim'
