@@ -1,4 +1,5 @@
-# ma
+This is the code for our IJCAI 2024 paper: 
+'Relevant Irrelevance: Generating Alterfactual Explanations for Image Classifiers'
 
 Install all required libraries listed in requirements.txt
 
